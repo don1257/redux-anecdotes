@@ -3,8 +3,15 @@ import {useDispatch, useSelector} from "react-redux";
 
 const AnecdoteList = () => {
 
-    const anecdotes = useSelector(state => state)
-    // filter on state here
+    const anecdotes = useSelector(state => {
+    if ( state.filter !== 'ALL'){
+        return state.anecdote.filter(anecdote => anecdote.content.includes(state.filter))
+    }
+    else{
+        return state.anecdote
+    }
+
+    })
 
     const dispatch = useDispatch()
 

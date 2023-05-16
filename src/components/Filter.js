@@ -5,11 +5,9 @@ import {useDispatch} from "react-redux";
 const Filter = () => {
 
     const dispatch = useDispatch()
-    const [input, setInput] = useState();
 
     const handleChange = (event) => {
-        setInput(event.target.value)
-        dispatch(filterChange(input))
+        dispatch(filterChange(event.target.value))
     }
     const style = {
         marginBottom: 10
