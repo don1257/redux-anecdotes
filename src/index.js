@@ -5,13 +5,21 @@ import { Provider } from 'react-redux'
 import App from './App'
 import filterReducer from "./reducers/filterReducer";
 import anecdoteReducer from "./reducers/anecdoteReducer";
+import {configureStore} from "@reduxjs/toolkit";
 
-const reducer = combineReducers({
-    anecdote: anecdoteReducer,
-    filter: filterReducer
+// const reducer = combineReducers({
+//     anecdote: anecdoteReducer,
+//     filter: filterReducer
+// })
+
+// const store = createStore(reducer)
+
+const store = configureStore({
+    reducer: {
+        anecdote: anecdoteReducer,
+        filter: filterReducer
+    }
 })
-
-const store = createStore(reducer)
 
 console.log(store.getState())
 
