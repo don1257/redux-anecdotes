@@ -36,7 +36,6 @@ const Notification = () => {
   return (
 
       <div>
-
         {addOneStatus
             ? <div style={style}>You Voted "{notification}"</div>
             : <div></div>}
