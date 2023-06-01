@@ -14,14 +14,7 @@ const anecdotesSlice = createSlice({
       return updatedAnecdotes;
     },
     addNewAnecdote: (state, action) => {
-      const newAnecdote = {
-        content: action.payload,
-        id: Math.floor(10000 + Math.random() * 90000),
-        votes: 0
-      }
-      AnecdoteService.createNew(newAnecdote)
-          .then(() => {return [...state, newAnecdote]});
-      return [...state];
+      return [...state, action.payload];
     },
     appendAnecdote(state, action) {
       state.push(action.payload)
@@ -34,11 +27,24 @@ const anecdotesSlice = createSlice({
 });
 
 export const initializeAnecdote = () => {
-  return async dispatch => {
+  return dispatch => {
     anecdotesService.getAll().then(notes => {
       console.log(notes)
       dispatch(setAnecdote(notes))
     })
+  }
+}
+
+export const createAnecdote = (contentAnecdote) => {
+  const newAnecdote = {
+    content: contentAnecdote,
+    id: Math.floor(10000 + Math.random() * 90000),
+    votes: 0
+  }
+
+  return dispatch => {
+    AnecdoteService.createNew(newAnecdote)
+        .then((result) => dispatch(addNewAnecdote(result)));
   }
 }
 
