@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {newAnecdote} from "../reducers/anecdoteReducer";
+import {appendAnecdote, addNewAnecdote} from "../reducers/anecdoteReducer";
 
 const AnecdoteForm = () => {
 
@@ -9,7 +9,7 @@ const AnecdoteForm = () => {
 
     const formSubmit = (event) => {
         event.preventDefault()
-        dispatch(newAnecdote(inputs.createNew))
+        dispatch(addNewAnecdote(inputs.createNew))
     }
 
     const handleChange = (event) => {
