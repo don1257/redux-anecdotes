@@ -34,8 +34,7 @@ const AnecdoteList = () => {
                 </div>
                 <div>
                     has {anecdote.votes}
-                    <button onClick={() => handleVote(anecdote.id)}>vote</button>
-                    <button onClick={() => handleVote(anecdote.id, anecdote.content, 5000)}>vote2</button>
+                    <button onClick={() => handleVote(anecdote.id, anecdote.content, 5000)}>vote</button>
                 </div>
             </div>
         )}
