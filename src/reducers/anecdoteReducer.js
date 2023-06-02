@@ -50,7 +50,6 @@ export const createAnecdote = (contentAnecdote) => {
 }
 
 export const upVoteAnecdote = (id) => {
-
   return async dispatch => {
     let result = await anecdotesService.getOne(id)
     result.votes = result.votes += 1

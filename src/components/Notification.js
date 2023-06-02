@@ -7,21 +7,22 @@ const Notification = () => {
   const dispatch = useDispatch()
 
   const notification = useSelector((state) => {
-      if (state.notification != false){
-        const anecdote = state.anecdote.find(item => item.id === state.notification);
-        return anecdote ? anecdote.content : null;
-      }
+    return state.notification.content;
+  })
+
+  const notificationTimer = useSelector((state) => {
+    return state.notification.time;
   })
 
   useEffect(() => {
-    if (notification != null){
+    if (notification != false){
       setAddOneStatus(true);
       console.log(notification)
     }
 
     const timeoutId = setTimeout(() => {
       setAddOneStatus(false);
-    }, 5000);
+    }, notificationTimer);
 
     return () => {
       clearTimeout(timeoutId);
